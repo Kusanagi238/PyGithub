@@ -2930,7 +2930,7 @@ class OpenApi:
         self.classes = index.get("classes", {})
         self.schema_to_class = index.get("indices", {}).get("schema_to_classes", {})
         self.schema_to_class["default"] = ["GithubObject"]
-        self.spec = OpenApi.read_json(args.spec) if self.subcommand != "index" and "spec" in args else {}
+        self.spec = OpenApi.read_json(args.spec) if self.subcommand not in ["fetch", "index"] and "spec" in args else {}
 
     def as_python_type(
         self,
