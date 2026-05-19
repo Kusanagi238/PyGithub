@@ -2701,7 +2701,7 @@ class CreateClassMethodTransformer(CstTransformerBase):
         request_properties = (
             {
                 prop: as_python_type(
-                    desc, list(schema_path + (prop,)), self.schema_to_class, self.classes, verbose=True
+                    desc, list(schema_path + (prop,)), self.schema_to_class, self.classes, self.spec, verbose=True
                 )
                 for prop, desc in request_schema.get("properties", {}).items()
             }
