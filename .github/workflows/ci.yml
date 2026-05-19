@@ -68,6 +68,23 @@ jobs:
         run: false
         shell: bash
 
+  openapi:
+    name: "test OpenAPI script"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Set up dependencies
+        run: |
+          pip install -r requirements/scripts.txt -r requirements/test.txt
+      - name: Test OpenAPI script
+        shell: bash
+        run: |
+          pytest openapi/Cli.py
+
   index:
     name: "Check verbs"
     needs: "test_success"
