@@ -2950,7 +2950,7 @@ class OpenApi:
         )
 
     @staticmethod
-    def read_json(filename: str) -> dict[str, Any]:
+    def read_json(filename: str | Path) -> dict[str, Any]:
         with open(filename) as r:
             return json.load(r)
 
